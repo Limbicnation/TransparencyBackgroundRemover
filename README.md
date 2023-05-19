@@ -12,9 +12,11 @@ Installation Instructions:
 # Installation on Windows:
 
 conda create --name myenv python=3.9
+
 conda activate myenv
 
 pip install numpy
+
 pip install 
 
 # install open cv
