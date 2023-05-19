@@ -17,7 +17,6 @@ conda activate myenv
 
 pip install numpy
 
-pip install 
 
 # install open cv
 
