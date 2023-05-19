@@ -4,10 +4,10 @@ import numpy as np
 import cv2
 
 # Set the folder path containing the images
-folder_path = 'F:/GitHub/Python/input'
+folder_path = 'F:/Path/To/Your/Input/Folder'
 
 # Set the output folder path where the PNG files will be saved
-output_folder = 'F:/GitHub/Python/output'
+output_folder = '/Path/To/Your/Output/Folder'
 
 # Set the desired image size after background removal
 target_size = (64, 64)
