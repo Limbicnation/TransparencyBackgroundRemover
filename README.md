@@ -14,8 +14,8 @@ A Python script that removes the background of images while preserving transpare
 Setting Up a Virtual Environment
 
 ```bash
-conda create --name myenv python=3.10
-conda activate myenv
+conda create --name bgremover python=3.10
+conda activate bgremover
 ```
 ```bash
 pip install Pillow numpy opencv-python
