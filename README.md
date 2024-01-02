@@ -21,5 +21,9 @@ conda activate bgremover
 pip install Pillow numpy opencv-python
 ```
 
+With this script, you can specify the ```input folder```, ```output folder```, ```target size```, and ```interpolation method``` as optional command-line arguments when running the script. For example:
 
+```bash
+python image_conversion.py --input_folder ./input_folder --output_folder ./output_folder --target_size 1024 1024 --interpolation_method NEAREST
+```
 
