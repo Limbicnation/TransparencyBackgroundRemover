@@ -3,7 +3,7 @@ import glob
 import cv2
 import numpy as np
 from PIL import Image
-
+import argparse
 
 def remove_background_with_grabcut(image_path):
     # Load image
@@ -37,7 +37,6 @@ def remove_background_with_grabcut(image_path):
 
     return image_rgba
 
-
 def remove_background_and_resize(folder_path, output_folder, target_size, interpolation_method):
     if not os.path.exists(output_folder):
         os.makedirs(output_folder)
@@ -57,11 +56,20 @@ def remove_background_and_resize(folder_path, output_folder, target_size, interp
         output_file_path = os.path.join(output_folder, f'{os.path.splitext(filename)[0]}_resized.png')
         resized_image.save(output_file_path, 'PNG')
 
-
 if __name__ == '__main__':
-    folder_path = './input_folder'
-    output_folder = './output_folder'
-    target_size = (64, 64)
-    interpolation_method = Image.NEAREST  # Use nearest-neighbor interpolation method
+    parser = argparse.ArgumentParser(description='Remove background and resize images.')
+    parser.add_argument('--input_folder', type=str, default='./input_folder', help='Path to input folder')
+    parser.add_argument('--output_folder', type=str, default='./output_folder', help='Path to output folder')
+    parser.add_argument('--target_size', type=int, nargs=2, default=[64, 64], help='Target size (width height)')
+    parser.add_argument('--interpolation_method', type=str, default='NEAREST',
+                        help='Interpolation method (NEAREST, BILINEAR, BICUBIC)')
+
+    args = parser.parse_args()
+
+    folder_path = args.input_folder
+    output_folder = args.output_folder
+    target_size = tuple(args.target_size)
+
+    interpolation_method = getattr(Image, args.interpolation_method)
 
     remove_background_and_resize(folder_path, output_folder, target_size, interpolation_method)
