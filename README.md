@@ -1,29 +1,48 @@
 # TransparencyBackgroundRemover
 
-A Python script that removes the background of images while preserving transparency. It uses OpenCV and PIL (Python Imaging Library) to perform background removal and saves the images in PNG format with transparency intact.
+A Python script optimized for removing backgrounds from pixel art and regular images while preserving transparency. Supports multiple background removal methods and pixel-perfect scaling.
 
-## Installation Instructions:
-
-1. Make sure you have Python installed on your system.
-2. Create a new Python environment using virtualenv or conda.
-3. Activate the created environment.
-4. Install the required dependencies by running the following command:
-
-# Installation on Windows and Linux:
-
-Setting Up a Virtual Environment
+## Installation
 
 ```bash
-conda create --name bgremover python=3.10
+# Create and activate environment
+conda create --name bgremover python=3.11
 conda activate bgremover
-```
-```bash
+
+# Install dependencies
 pip install Pillow numpy opencv-python
 ```
 
-With this script, you can specify the ```input folder```, ```output folder```, ```target size```, and ```interpolation method``` as optional command-line arguments when running the script. For example:
+## Usage
 
+Basic usage with default settings:
 ```bash
-python image_conversion.py --input_folder ./input_folder --output_folder ./output_folder --target_size 1024 1024 --interpolation_method NEAREST
+python script.py --input_folder ./input --output_folder ./output
 ```
 
+All options:
+```bash
+python script.py \
+  --input_folder ./input \
+  --output_folder ./output \
+  --target_size 64 64 \
+  --method hybrid \
+  --tolerance 30
+```
+
+## Parameters
+
+- `--method`: Background removal method (`hybrid`, `color`, or `grabcut`)
+  - `hybrid`: Best for pixel art (combines color and edge detection)
+  - `color`: Good for solid backgrounds
+  - `grabcut`: Better for photographs
+- `--target_size`: Output dimensions as width height (default: 64 64)
+- `--tolerance`: Color similarity threshold 0-255 (default: 30, lower = stricter)
+
+## Tips
+
+- For pixel art: Use `hybrid` method with lower tolerance (20-30)
+- For photos: Use `grabcut` method
+- If background isn't fully removed: Adjust tolerance or try different method
+- Supports both JPG and PNG formats
+- Outputs PNG files with transparency
