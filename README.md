@@ -26,17 +26,17 @@ pip install Pillow numpy opencv-python scikit-learn tqdm
 
 Basic usage with default settings:
 ```bash
-python enhanced_image_conversion.py --input_folder ./input_folder --output_folder ./output --target_size 512 512
+python image_conversion.py --input_folder ./input_folder --output_folder ./output --target_size 512 512
 ```
 
 Preview a single image:
 ```bash
-python enhanced_image_conversion.py --preview ./input_folder/sprite.png --output_folder ./preview
+python image_conversion.py --preview ./input_folder/sprite.png --output_folder ./preview
 ```
 
 All options:
 ```bash
-python enhanced_image_conversion.py \
+python image_conversion.py \
   --input_folder ./input_folder \
   --output_folder ./output \
   --target_size 512 512 \

@@ -312,15 +312,13 @@ class EnhancedPixelArtProcessor:
                     current_w // 2,
                     current_h // 2
                 )
-                image = image.resize(intermediate_size, Image.BICUBIC)
+                image = image.resize(intermediate_size, Image.NEAREST)
                 return self.optimize_pixel_scaling(image, target_size)  # Recursively continue
             
             # Final resize with appropriate algorithm for small downscaling
-            image = image.resize(target_size, Image.BICUBIC)
+            image = image.resize(target_size, Image.NEAREST)
             
             # Restore pixel art look
-            enhancer = ImageEnhance.Sharpness(image)
-            image = enhancer.enhance(1.5)  # Slightly sharpen
         
         return image
 
